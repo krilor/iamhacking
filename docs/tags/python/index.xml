@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on I am hacking</title>
-    <link>https://krilor.github.com/iamhacking/posts/</link>
-    <description>Recent content in Posts on I am hacking</description>
+    <title>python on I am hacking</title>
+    <link>https://krilor.github.com/iamhacking/tags/python/</link>
+    <description>Recent content in python on I am hacking</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 20 Jul 2020 10:56:24 +0200</lastBuildDate>
     
-	<atom:link href="https://krilor.github.com/iamhacking/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://krilor.github.com/iamhacking/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,24 +20,6 @@
 To start out, I made a md5 hash on the command line
 echo -n &amp;#34;1234&amp;#34; | md5sum The password is 1234 The resulting hash is: 81dc9bdb52d04dc20036dbd8313ed055.
 NOTE: md5 is not a hasing algorithm that should be used to hash passwords - use bcrypt or Argon2 or at the very least a shaN with salt and a lot of iteration.</description>
-    </item>
-    
-    <item>
-      <title>Hugo &#43; Jupyter</title>
-      <link>https://krilor.github.com/iamhacking/posts/hugo-and-jupyter/</link>
-      <pubDate>Mon, 20 Jul 2020 10:04:24 +0200</pubDate>
-      
-      <guid>https://krilor.github.com/iamhacking/posts/hugo-and-jupyter/</guid>
-      <description>k = 8 print(k) 8  Markdown This shows it&amp;rsquo;s possible to use jupyter to create content for Hugo.</description>
-    </item>
-    
-    <item>
-      <title>Ready to GO</title>
-      <link>https://krilor.github.com/iamhacking/posts/ready-to-go/</link>
-      <pubDate>Mon, 20 Jul 2020 09:24:24 +0200</pubDate>
-      
-      <guid>https://krilor.github.com/iamhacking/posts/ready-to-go/</guid>
-      <description>I&amp;rsquo;m setting up this blog/journal repo to document things I explore and learn when dipping my toes into cyber security.</description>
     </item>
     
   </channel>

@@ -2,19 +2,25 @@
 <html lang='en' dir='auto'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='k = 8 print(k) 8  Markdown This shows it&rsquo;s possible to use jupyter to create content for Hugo.'>
+<meta name='description' content='It probably makes sense to crack passwords using tools such as hashcat, john the ripper or findmyhash, but today I&rsquo;m gonna have a stab at brute-forcing a hash using python.
+To start out, I made a md5 hash on the command line
+echo -n &#34;1234&#34; | md5sum The password is 1234 The resulting hash is: 81dc9bdb52d04dc20036dbd8313ed055.
+NOTE: md5 is not a hasing algorithm that should be used to hash passwords - use bcrypt or Argon2 or at the very least a shaN with salt and a lot of iteration.'>
 <meta name='theme-color' content='#ffcd00'>
 
-<meta property='og:title' content='Hugo &#43; Jupyter • I am hacking'>
-<meta property='og:description' content='k = 8 print(k) 8  Markdown This shows it&rsquo;s possible to use jupyter to create content for Hugo.'>
-<meta property='og:url' content='https://krilor.github.com/iamhacking/posts/hugo-and-jupyter/'>
+<meta property='og:title' content='Using python to crack a (known) password hash • I am hacking'>
+<meta property='og:description' content='It probably makes sense to crack passwords using tools such as hashcat, john the ripper or findmyhash, but today I&rsquo;m gonna have a stab at brute-forcing a hash using python.
+To start out, I made a md5 hash on the command line
+echo -n &#34;1234&#34; | md5sum The password is 1234 The resulting hash is: 81dc9bdb52d04dc20036dbd8313ed055.
+NOTE: md5 is not a hasing algorithm that should be used to hash passwords - use bcrypt or Argon2 or at the very least a shaN with salt and a lot of iteration.'>
+<meta property='og:url' content='https://krilor.github.com/iamhacking/posts/python-based-password-cracking/'>
 <meta property='og:site_name' content='I am hacking'>
-<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='hugo'><meta property='article:tag' content='jupyter'><meta property='article:published_time' content='2020-07-20T10:04:24&#43;02:00'/><meta property='article:modified_time' content='2020-07-20T10:04:24&#43;02:00'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='python'><meta property='article:tag' content='cracking'><meta property='article:tag' content='passwords'><meta property='article:published_time' content='2020-07-20T10:56:24&#43;02:00'/><meta property='article:modified_time' content='2020-07-20T10:56:24&#43;02:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.74.1" />
 
-  <title>Hugo &#43; Jupyter • I am hacking</title>
-  <link rel='canonical' href='https://krilor.github.com/iamhacking/posts/hugo-and-jupyter/'>
+  <title>Using python to crack a (known) password hash • I am hacking</title>
+  <link rel='canonical' href='https://krilor.github.com/iamhacking/posts/python-based-password-cracking/'>
   
   
   <link rel='icon' href='/iamhacking/favicon.ico'>
@@ -118,7 +124,7 @@
     <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
   <section class='widget widget-breadcrumbs sep-after'>
     <nav id='breadcrumbs'>
-      <ol><li><a href='/iamhacking/'>I am hacking</a></li><li><a href='/iamhacking/posts/'>Posts</a></li><li><span>Hugo &#43; Jupyter</span></li></ol>
+      <ol><li><a href='/iamhacking/'>I am hacking</a></li><li><a href='/iamhacking/posts/'>Posts</a></li><li><span>Using python to crack a (known) password hash</span></li></ol>
     </nav>
   </section></div>
       </div>
@@ -137,7 +143,7 @@
   <header class='header entry-header'>
   <div class='container sep-after'>
     <div class='header-info'>
-      <h1 class='title'>Hugo &#43; Jupyter</h1>
+      <h1 class='title'>Using python to crack a (known) password hash</h1>
       
 
     </div>
@@ -151,7 +157,7 @@
   
 </svg>
 <span class='screen-reader-text'>Posted on </span>
-  <time class='entry-date' datetime='2020-07-20T10:04:24&#43;02:00'>2020, Jul 20</time>
+  <time class='entry-date' datetime='2020-07-20T10:56:24&#43;02:00'>2020, Jul 20</time>
 </span>
 
   
@@ -162,7 +168,7 @@
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-One min read
+2 mins read
 </span>
 
 
@@ -176,12 +182,47 @@ One min read
   
 
   <div class='container entry-content'>
-  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">k <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(k)
-</code></pre></div><pre><code>8
+  <p>It probably makes sense to crack passwords using tools such as hashcat, john the ripper or findmyhash, but today I&rsquo;m gonna have a stab at brute-forcing a hash using python.</p>
+<p>To start out, I made a md5 hash on the command line</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+echo -n <span style="color:#e6db74">&#34;1234&#34;</span> | md5sum
+
+</code></pre></div><p>The password is <em>1234</em> The resulting hash is: <em>81dc9bdb52d04dc20036dbd8313ed055</em>.</p>
+<p><strong>NOTE: md5 is not a hasing algorithm that should be used to hash passwords - use bcrypt or Argon2 or at the very least a shaN with salt and a lot of iteration. I&rsquo;ve selected it today because it is fast and easy to work with when exploring this idea.</strong></p>
+<h2 id="cracking-the-hash">Cracking the hash</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> hashlib
+
+hash <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;81dc9bdb52d04dc20036dbd8313ed055&#34;</span>
+
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">9999</span>):
+    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;At </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> i)
+    
+    generated <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>md5(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> i)<span style="color:#f92672">.</span>hexdigest()
+    
+    <span style="color:#66d9ef">if</span> generated <span style="color:#f92672">==</span> hash:
+        <span style="color:#66d9ef">print</span>( <span style="color:#e6db74">&#34;Found it - password is &#39;</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#39;&#34;</span> <span style="color:#f92672">%</span> i)
+        <span style="color:#66d9ef">break</span>
+    
+</code></pre></div><pre><code>At 0
+At 100
+At 200
+At 300
+At 400
+At 500
+At 600
+At 700
+At 800
+At 900
+At 1000
+At 1100
+At 1200
+Found it - password is '1234'
 </code></pre>
-<h2 id="markdown">Markdown</h2>
-<p>This shows it&rsquo;s possible to use jupyter to create content for Hugo.</p>
+<p>The above example shows a simple way to bruteforce the hash. It is as simple as it can be, just iterating over a integers from 0 and upwards.</p>
+<p>Ofcourse, if this was a &ldquo;proper&rdquo; hash where we did not know the hashed value, then we would have to include all kinds of other characters.</p>
+<h2 id="next-up">Next up</h2>
+<p>Next up, I will look into hashcat, john the ripper, findmyhash etc.</p>
 
 </div>
 
@@ -193,7 +234,7 @@ One min read
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>Tags: </span><a class='tag' href='/iamhacking/tags/hugo/'>hugo</a>, <a class='tag' href='/iamhacking/tags/jupyter/'>jupyter</a></div>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/iamhacking/tags/python/'>python</a>, <a class='tag' href='/iamhacking/tags/cracking/'>cracking</a>, <a class='tag' href='/iamhacking/tags/passwords/'>passwords</a></div>
 
   </div>
 </footer>
@@ -203,7 +244,7 @@ One min read
 
 <nav class='entry-nav'>
   <div class='container'><div class='prev-entry sep-before'>
-      <a href='/iamhacking/posts/ready-to-go/'>
+      <a href='/iamhacking/posts/hugo-and-jupyter/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -211,17 +252,7 @@ One min read
   
 </svg>
  Previous</span>
-        <span class='screen-reader-text'>Previous post: </span>Ready to GO</a>
-    </div><div class='next-entry sep-before'>
-      <a href='/iamhacking/posts/python-based-password-cracking/'>
-        <span class='screen-reader-text'>Next post: </span>Using python to crack a (known) password hash<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="4" y1="12" x2="20" y2="12"/>
-  <polyline points="14 6 20 12 14 18"/>
-  
-</svg>
-</span>
-      </a>
+        <span class='screen-reader-text'>Previous post: </span>Hugo &#43; Jupyter</a>
     </div></div>
 </nav>
 
