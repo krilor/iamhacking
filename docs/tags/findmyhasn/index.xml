@@ -1,36 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>cracking on I am hacking</title>
-    <link>https://krilor.github.com/iamhacking/tags/cracking/</link>
-    <description>Recent content in cracking on I am hacking</description>
+    <title>findmyhasn on I am hacking</title>
+    <link>https://krilor.github.com/iamhacking/tags/findmyhasn/</link>
+    <description>Recent content in findmyhasn on I am hacking</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 20 Jul 2020 21:06:00 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2020 10:04:24 +0200</lastBuildDate>
     
-	<atom:link href="https://krilor.github.com/iamhacking/tags/cracking/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://krilor.github.com/iamhacking/tags/findmyhasn/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Using findmyhash to crack a password</title>
       <link>https://krilor.github.com/iamhacking/posts/find-my-hash/</link>
-      <pubDate>Mon, 20 Jul 2020 21:06:00 +0200</pubDate>
+      <pubDate>Mon, 20 Jul 2020 10:04:24 +0200</pubDate>
       
       <guid>https://krilor.github.com/iamhacking/posts/find-my-hash/</guid>
       <description>This time around I will test findmyhash to crack a known password hash. Findmyhash is as tool that uses online services to search for the value of a hash. The online services has pre-computed hash values that are searched through, so-called &amp;ldquo;raindow tables&amp;rdquo;
 Note: I&amp;rsquo;ve installed findmyhash.py as findmyhash and added a hashbang so I can call it directly.
 findmyhash /usr/bin/findmyhash 1.1.2 ( http://code.google.com/p/findmyhash/ ) Usage: ------ python /usr/bin/findmyhash &amp;lt;algorithm&amp;gt; OPTIONS Accepted algorithms are: ------------------------ MD4 - RFC 1320 MD5 - RFC 1321 SHA1 - RFC 3174 (FIPS 180-3) SHA224 - RFC 3874 (FIPS 180-3) SHA256 - FIPS 180-3 SHA384 - FIPS 180-3 SHA512 - FIPS 180-3 RMD160 - RFC 2857 GOST - RFC 5831 WHIRLPOOL - ISO/IEC 10118-3:2004 LM - Microsoft Windows hash NTLM - Microsoft Windows hash MYSQL - MySQL 3, 4, 5 hash CISCO7 - Cisco IOS type 7 encrypted passwords JUNIPER - Juniper Networks $9$ encrypted passwords LDAP_MD5 - MD5 Base64 encoded LDAP_SHA1 - SHA1 Base64 encoded NOTE: for LM / NTLM it is recommended to introduce both values with this format: python /usr/bin/findmyhash LM -h 9a5760252b7455deaad3b435b51404ee:0d7f1f2bdeac6e574d6e18ca85fb58a7 python /usr/bin/findmyhash NTLM -h 9a5760252b7455deaad3b435b51404ee:0d7f1f2bdeac6e574d6e18ca85fb58a7 Valid OPTIONS are: ------------------ -h &amp;lt;hash_value&amp;gt; If you only want to crack one hash, specify its value with this option.</description>
-    </item>
-    
-    <item>
-      <title>Using python to crack a (known) password hash</title>
-      <link>https://krilor.github.com/iamhacking/posts/python-based-password-cracking/</link>
-      <pubDate>Mon, 20 Jul 2020 10:56:24 +0200</pubDate>
-      
-      <guid>https://krilor.github.com/iamhacking/posts/python-based-password-cracking/</guid>
-      <description>It probably makes sense to crack passwords using tools such as hashcat, john the ripper or findmyhash, but today I&amp;rsquo;m gonna have a stab at brute-forcing a hash using python.
-To start out, I made a md5 hash on the command line
-echo -n &amp;#34;1234&amp;#34; | md5sum The password is 1234 The resulting hash is: 81dc9bdb52d04dc20036dbd8313ed055.
-NOTE: md5 is not a hasing algorithm that should be used to hash passwords - use bcrypt or Argon2 or at the very least a shaN with salt and a lot of iteration.</description>
     </item>
     
   </channel>

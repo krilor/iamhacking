@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='This time around I will test findmyhash to crack a known password hash. Findmyhash is as tool that uses online services to search for the value of a hash. The online services has pre-computed hash values that are searched through, so-called &ldquo;raindow tables&rdquo;
+Note: I&rsquo;ve installed findmyhash.py as findmyhash and added a hashbang so I can call it directly.
+findmyhash /usr/bin/findmyhash 1.1.2 ( http://code.google.com/p/findmyhash/ ) Usage: ------ python /usr/bin/findmyhash &lt;algorithm&gt; OPTIONS Accepted algorithms are: ------------------------ MD4 - RFC 1320 MD5 - RFC 1321 SHA1 - RFC 3174 (FIPS 180-3) SHA224 - RFC 3874 (FIPS 180-3) SHA256 - FIPS 180-3 SHA384 - FIPS 180-3 SHA512 - FIPS 180-3 RMD160 - RFC 2857 GOST - RFC 5831 WHIRLPOOL - ISO/IEC 10118-3:2004 LM - Microsoft Windows hash NTLM - Microsoft Windows hash MYSQL - MySQL 3, 4, 5 hash CISCO7 - Cisco IOS type 7 encrypted passwords JUNIPER - Juniper Networks $9$ encrypted passwords LDAP_MD5 - MD5 Base64 encoded LDAP_SHA1 - SHA1 Base64 encoded NOTE: for LM / NTLM it is recommended to introduce both values with this format: python /usr/bin/findmyhash LM -h 9a5760252b7455deaad3b435b51404ee:0d7f1f2bdeac6e574d6e18ca85fb58a7 python /usr/bin/findmyhash NTLM -h 9a5760252b7455deaad3b435b51404ee:0d7f1f2bdeac6e574d6e18ca85fb58a7 Valid OPTIONS are: ------------------ -h &lt;hash_value&gt; If you only want to crack one hash, specify its value with this option.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Using findmyhash to crack a password • I am hacking'>
+<meta property='og:description' content='This time around I will test findmyhash to crack a known password hash. Findmyhash is as tool that uses online services to search for the value of a hash. The online services has pre-computed hash values that are searched through, so-called &ldquo;raindow tables&rdquo;
+Note: I&rsquo;ve installed findmyhash.py as findmyhash and added a hashbang so I can call it directly.
+findmyhash /usr/bin/findmyhash 1.1.2 ( http://code.google.com/p/findmyhash/ ) Usage: ------ python /usr/bin/findmyhash &lt;algorithm&gt; OPTIONS Accepted algorithms are: ------------------------ MD4 - RFC 1320 MD5 - RFC 1321 SHA1 - RFC 3174 (FIPS 180-3) SHA224 - RFC 3874 (FIPS 180-3) SHA256 - FIPS 180-3 SHA384 - FIPS 180-3 SHA512 - FIPS 180-3 RMD160 - RFC 2857 GOST - RFC 5831 WHIRLPOOL - ISO/IEC 10118-3:2004 LM - Microsoft Windows hash NTLM - Microsoft Windows hash MYSQL - MySQL 3, 4, 5 hash CISCO7 - Cisco IOS type 7 encrypted passwords JUNIPER - Juniper Networks $9$ encrypted passwords LDAP_MD5 - MD5 Base64 encoded LDAP_SHA1 - SHA1 Base64 encoded NOTE: for LM / NTLM it is recommended to introduce both values with this format: python /usr/bin/findmyhash LM -h 9a5760252b7455deaad3b435b51404ee:0d7f1f2bdeac6e574d6e18ca85fb58a7 python /usr/bin/findmyhash NTLM -h 9a5760252b7455deaad3b435b51404ee:0d7f1f2bdeac6e574d6e18ca85fb58a7 Valid OPTIONS are: ------------------ -h &lt;hash_value&gt; If you only want to crack one hash, specify its value with this option.'>
+<meta property='og:url' content='https://krilor.github.com/iamhacking/posts/find-my-hash/'>
+<meta property='og:site_name' content='I am hacking'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='findmyhash'><meta property='article:tag' content='password'><meta property='article:tag' content='cracking'><meta property='article:published_time' content='2020-07-20T21:06:00&#43;02:00'/><meta property='article:modified_time' content='2020-07-20T21:06:00&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.74.1" />
+
+  <title>Using findmyhash to crack a password • I am hacking</title>
+  <link rel='canonical' href='https://krilor.github.com/iamhacking/posts/find-my-hash/'>
+  
+  
+  <link rel='icon' href='/iamhacking/favicon.ico'>
+<link rel='stylesheet' href='/iamhacking/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/iamhacking/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/iamhacking/'>
+        <img src='/iamhacking/images/logo.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/iamhacking/'>
+      I am hacking
+      </a>
+    </h2>
+    <div class='desc'>
+    Kristoffer is exporing cyber security
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Search</h4>
+  </header>
+
+  <form action='/iamhacking/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/iamhacking/tags/cracking/' style='font-size:2em'>cracking</a>
+      </li><li>
+        <a href='/iamhacking/tags/findmyhash/' style='font-size:1em'>findmyhash</a>
+      </li><li>
+        <a href='/iamhacking/tags/hugo/' style='font-size:1em'>hugo</a>
+      </li><li>
+        <a href='/iamhacking/tags/jupyter/' style='font-size:1em'>jupyter</a>
+      </li><li>
+        <a href='/iamhacking/tags/password/' style='font-size:1em'>password</a>
+      </li><li>
+        <a href='/iamhacking/tags/passwords/' style='font-size:1em'>passwords</a>
+      </li><li>
+        <a href='/iamhacking/tags/python/' style='font-size:1em'>python</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://github.com/krilor/iamhacking'>Github Repo</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/iamhacking/'>I am hacking</a></li><li><a href='/iamhacking/posts/'>Posts</a></li><li><span>Using findmyhash to crack a password</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>I am hacking</p><p class='desc site-desc'>Kristoffer is exporing cyber security</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Using findmyhash to crack a password</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2020-07-20T21:06:00&#43;02:00'>2020, Jul 20</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+4 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>This time around I will test <a href="https://tools.kali.org/password-attacks/findmyhash">findmyhash</a> to crack a known password hash. Findmyhash is as tool that uses online services to search for the value of a hash. The online services has pre-computed hash values that are searched through, so-called &ldquo;raindow tables&rdquo;</p>
+<p><em>Note: I&rsquo;ve installed findmyhash.py as findmyhash and added a hashbang so I can call it directly.</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">findmyhash
+</code></pre></div><pre><code>/usr/bin/findmyhash 1.1.2 ( http://code.google.com/p/findmyhash/ )
+
+Usage: 
+------
+
+  python /usr/bin/findmyhash &lt;algorithm&gt; OPTIONS
+
+
+Accepted algorithms are:
+------------------------
+
+  MD4       - RFC 1320
+  MD5       - RFC 1321
+  SHA1      - RFC 3174 (FIPS 180-3)
+  SHA224    - RFC 3874 (FIPS 180-3)
+  SHA256    - FIPS 180-3
+  SHA384    - FIPS 180-3
+  SHA512    - FIPS 180-3
+  RMD160    - RFC 2857
+  GOST      - RFC 5831
+  WHIRLPOOL - ISO/IEC 10118-3:2004
+  LM        - Microsoft Windows hash
+  NTLM      - Microsoft Windows hash
+  MYSQL     - MySQL 3, 4, 5 hash
+  CISCO7    - Cisco IOS type 7 encrypted passwords
+  JUNIPER   - Juniper Networks $9$ encrypted passwords
+  LDAP_MD5  - MD5 Base64 encoded
+  LDAP_SHA1 - SHA1 Base64 encoded
+ 
+  NOTE: for LM / NTLM it is recommended to introduce both values with this format:
+         python /usr/bin/findmyhash LM   -h 9a5760252b7455deaad3b435b51404ee:0d7f1f2bdeac6e574d6e18ca85fb58a7
+         python /usr/bin/findmyhash NTLM -h 9a5760252b7455deaad3b435b51404ee:0d7f1f2bdeac6e574d6e18ca85fb58a7
+
+
+Valid OPTIONS are:
+------------------
+
+  -h &lt;hash_value&gt;  If you only want to crack one hash, specify its value with this option.
+
+  -f &lt;file&gt;        If you have several hashes, you can specify a file with one hash per line.
+                   NOTE: All of them have to be the same type.
+                   
+  -g               If your hash cannot be cracked, search it in Google and show all the results.
+                   NOTE: This option ONLY works with -h (one hash input) option.
+
+
+Examples:
+---------
+
+  -&gt; Try to crack only one hash.
+     python /usr/bin/findmyhash MD5 -h 098f6bcd4621d373cade4e832627b4f6
+     
+  -&gt; Try to crack a JUNIPER encrypted password escaping special characters.
+     python /usr/bin/findmyhash JUNIPER -h &quot;\$9\$LbHX-wg4Z&quot;
+  
+  -&gt; If the hash cannot be cracked, it will be searched in Google.
+     python /usr/bin/findmyhash LDAP_SHA1 -h &quot;{SHA}cRDtpNCeBiql5KOQsKVyrA0sAiA=&quot; -g
+   
+  -&gt; Try to crack multiple hashes using a file (one hash per line).
+     python /usr/bin/findmyhash MYSQL -f mysqlhashesfile.txt
+     
+     
+Contact:
+--------
+
+[Web]           http://laxmarcaellugar.blogspot.com/
+[Mail/Google+]  bloglaxmarcaellugar@gmail.com
+[twitter]       @laXmarcaellugar
+</code></pre>
+<h2 id="lets-try-it-out">Let&rsquo;s try it out</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">findmyhash MD5 -h 81dc9bdb52d04dc20036dbd8313ed055
+</code></pre></div><pre><code>Cracking hash: 81dc9bdb52d04dc20036dbd8313ed055
+
+Analyzing with schwett (http://schwett.com)...
+... hash not found in schwett
+
+Analyzing with netmd5crack (http://www.netmd5crack.com)...
+... hash not found in netmd5crack
+
+Analyzing with md5-cracker (http://www.md5-cracker.tk)...
+... hash not found in md5-cracker
+
+Analyzing with benramsey (http://tools.benramsey.com)...
+... hash not found in benramsey
+
+Analyzing with gromweb (http://md5.gromweb.com)...
+... hash not found in gromweb
+
+Analyzing with hashcracking (http://md5.hashcracking.com)...
+... hash not found in hashcracking
+
+Analyzing with hashcracking (http://victorov.su)...
+... hash not found in hashcracking
+
+Analyzing with thekaine (http://md5.thekaine.de)...
+... hash not found in thekaine
+
+Analyzing with tmto (http://www.tmto.org)...
+... hash not found in tmto
+
+Analyzing with rednoize (http://md5.rednoize.com)...
+... hash not found in rednoize
+
+Analyzing with md5-db (http://md5-db.de)...
+... hash not found in md5-db
+
+Analyzing with my-addr (http://md5.my-addr.com)...
+... hash not found in my-addr
+
+Analyzing with md5pass (http://md5pass.info)...
+... hash not found in md5pass
+
+Analyzing with md5decryption (http://md5decryption.com)...
+... hash not found in md5decryption
+
+Analyzing with md5crack (http://md5crack.com)...
+... hash not found in md5crack
+
+Analyzing with md5online (http://md5online.net)...
+... hash not found in md5online
+
+Analyzing with md5-decrypter (http://md5-decrypter.com)...
+... hash not found in md5-decrypter
+
+Analyzing with authsecu (http://www.authsecu.com)...
+... hash not found in authsecu
+
+Analyzing with hashcrack (http://hashcrack.com)...
+... hash not found in hashcrack
+
+Analyzing with c0llision (http://www.c0llision.net)...
+... hash not found in c0llision
+
+Analyzing with cmd5 (http://www.cmd5.org)...
+... hash not found in cmd5
+
+Analyzing with bigtrapeze (http://www.bigtrapeze.com)...
+... hash not found in bigtrapeze
+
+Analyzing with hashchecker (http://www.hashchecker.com)...
+... hash not found in hashchecker
+
+Analyzing with md5hashcracker (http://md5hashcracker.appspot.com)...
+... hash not found in md5hashcracker
+
+Analyzing with passcracking (http://passcracking.com)...
+... hash not found in passcracking
+
+Analyzing with askcheck (http://askcheck.com)...
+... hash not found in askcheck
+
+Analyzing with fox21 (http://cracker.fox21.at)...
+... hash not found in fox21
+
+Analyzing with nicenamecrew (http://crackfoo.nicenamecrew.com)...
+... hash not found in nicenamecrew
+
+Analyzing with joomlaaa (http://joomlaaa.com)...
+
+Something was wrong. Please, contact with us to report the bug:
+
+bloglaxmarcaellugar@gmail.com
+</code></pre>
+<p>The tool is not able to find the hashed value.</p>
+<p>For the kicks of it, lets try one of the suggested hashes.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">findmyhash JUNIPER -h <span style="color:#e6db74">&#34;\$9\$LbHX-wg4Z&#34;</span>
+</code></pre></div><pre><code>Cracking hash: $9$LbHX-wg4Z
+
+Analyzing with password-decrypt (http://password-decrypt.com)...
+
+***** HASH CRACKED!! *****
+The original string is: lc
+
+
+The following hashes were cracked:
+----------------------------------
+
+$9$LbHX-wg4Z -&gt; lc
+</code></pre>
+<p>It seems to be working&hellip; strage.</p>
+<h2 id="broken-tool">Broken tool</h2>
+<p>A quick google search for the hashed value reveals that it should exist in a couple of the databases. It seems that the tool is broken, either on my system or in general. Being a tool that has not been touched since 2011, I think this one one to keep buried deep in the toolbox. Rather just use good&rsquo;ol Google :)</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/iamhacking/tags/findmyhash/'>findmyhash</a>, <a class='tag' href='/iamhacking/tags/password/'>password</a>, <a class='tag' href='/iamhacking/tags/cracking/'>cracking</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/iamhacking/posts/python-based-password-cracking/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Using python to crack a (known) password hash</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/krilor' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2020 Kristoffer Lorentsen </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/iamhacking/assets/js/"</script>
+
+<script src='/iamhacking/assets/js/main.c3bcf2df.js'></script><script src='/iamhacking/js/custom.js'></script>
+
+</body>
+
+</html>
+

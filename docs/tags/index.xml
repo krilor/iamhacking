@@ -5,7 +5,7 @@
     <link>https://krilor.github.com/iamhacking/tags/</link>
     <description>Recent content in Tags on I am hacking</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 20 Jul 2020 10:56:24 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2020 21:06:00 +0200</lastBuildDate>
     
 	<atom:link href="https://krilor.github.com/iamhacking/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,9 +13,27 @@
     <item>
       <title>cracking</title>
       <link>https://krilor.github.com/iamhacking/tags/cracking/</link>
-      <pubDate>Mon, 20 Jul 2020 10:56:24 +0200</pubDate>
+      <pubDate>Mon, 20 Jul 2020 21:06:00 +0200</pubDate>
       
       <guid>https://krilor.github.com/iamhacking/tags/cracking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>findmyhash</title>
+      <link>https://krilor.github.com/iamhacking/tags/findmyhash/</link>
+      <pubDate>Mon, 20 Jul 2020 21:06:00 +0200</pubDate>
+      
+      <guid>https://krilor.github.com/iamhacking/tags/findmyhash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>password</title>
+      <link>https://krilor.github.com/iamhacking/tags/password/</link>
+      <pubDate>Mon, 20 Jul 2020 21:06:00 +0200</pubDate>
+      
+      <guid>https://krilor.github.com/iamhacking/tags/password/</guid>
       <description></description>
     </item>
     
