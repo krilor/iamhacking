@@ -4,3 +4,9 @@ init:
 
 freeze:
 	. .env/bin/activate && pip freeze > requirements.txt
+
+update-theme:
+	git submodule update
+
+build:
+	hugo

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://krilor.github.com/iamhacking/</loc>
+    <lastmod>2020-07-20T09:24:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://krilor.github.com/iamhacking/posts/</loc>
+    <lastmod>2020-07-20T09:24:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://krilor.github.com/iamhacking/posts/ready-to-go/</loc>
+    <lastmod>2020-07-20T09:24:24+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://krilor.github.com/iamhacking/authors/</loc>
+  </url>
+  
+  <url>
+    <loc>https://krilor.github.com/iamhacking/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://krilor.github.com/iamhacking/series/</loc>
+  </url>
+  
+  <url>
+    <loc>https://krilor.github.com/iamhacking/tags/</loc>
+  </url>
+  
+</urlset>
