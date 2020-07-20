@@ -5,10 +5,19 @@
     <link>https://krilor.github.com/iamhacking/posts/</link>
     <description>Recent content in Posts on I am hacking</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 20 Jul 2020 09:24:24 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2020 10:04:24 +0200</lastBuildDate>
     
 	<atom:link href="https://krilor.github.com/iamhacking/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo &#43; Jupyter</title>
+      <link>https://krilor.github.com/iamhacking/posts/hugo-and-jupyter/</link>
+      <pubDate>Mon, 20 Jul 2020 10:04:24 +0200</pubDate>
+      
+      <guid>https://krilor.github.com/iamhacking/posts/hugo-and-jupyter/</guid>
+      <description>k = 8 print(k) 8  Markdown This shows it&amp;rsquo;s possible to use jupyter to create content for Hugo.</description>
+    </item>
     
     <item>
       <title>Ready to GO</title>

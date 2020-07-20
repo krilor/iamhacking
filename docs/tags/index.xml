@@ -5,9 +5,28 @@
     <link>https://krilor.github.com/iamhacking/tags/</link>
     <description>Recent content in Tags on I am hacking</description>
     <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 20 Jul 2020 10:04:24 +0200</lastBuildDate>
     
 	<atom:link href="https://krilor.github.com/iamhacking/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>hugo</title>
+      <link>https://krilor.github.com/iamhacking/tags/hugo/</link>
+      <pubDate>Mon, 20 Jul 2020 10:04:24 +0200</pubDate>
+      
+      <guid>https://krilor.github.com/iamhacking/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jupyter</title>
+      <link>https://krilor.github.com/iamhacking/tags/jupyter/</link>
+      <pubDate>Mon, 20 Jul 2020 10:04:24 +0200</pubDate>
+      
+      <guid>https://krilor.github.com/iamhacking/tags/jupyter/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

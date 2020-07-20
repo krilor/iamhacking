@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>I am hacking</title>
-    <link>https://krilor.github.com/iamhacking/</link>
-    <description>Recent content on I am hacking</description>
+    <title>jupyter on I am hacking</title>
+    <link>https://krilor.github.com/iamhacking/tags/jupyter/</link>
+    <description>Recent content in jupyter on I am hacking</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 20 Jul 2020 10:04:24 +0200</lastBuildDate>
     
-	<atom:link href="https://krilor.github.com/iamhacking/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://krilor.github.com/iamhacking/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,15 +17,6 @@
       
       <guid>https://krilor.github.com/iamhacking/posts/hugo-and-jupyter/</guid>
       <description>k = 8 print(k) 8  Markdown This shows it&amp;rsquo;s possible to use jupyter to create content for Hugo.</description>
-    </item>
-    
-    <item>
-      <title>Ready to GO</title>
-      <link>https://krilor.github.com/iamhacking/posts/ready-to-go/</link>
-      <pubDate>Mon, 20 Jul 2020 09:24:24 +0200</pubDate>
-      
-      <guid>https://krilor.github.com/iamhacking/posts/ready-to-go/</guid>
-      <description>I&amp;rsquo;m setting up this blog/journal repo to document things I explore and learn when dipping my toes into cyber security.</description>
     </item>
     
   </channel>

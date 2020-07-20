@@ -8,5 +8,9 @@ freeze:
 update-theme:
 	git submodule update
 
-build:
+build: convert
 	hugo
+
+convert:
+	find ./notebooks/ -maxdepth 1 -name "*.ipynb" | xargs -I % basename % .ipynb | xargs -I % \
+	jupyter nbconvert --to markdown --output ../content/posts/%.md notebooks/%.ipynb
