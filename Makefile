@@ -1,6 +1,7 @@
 init:
 	stat .env || virtualenv .env
 	. .env/bin/activate && pip install -r requirements.txt
+	. .env/bin/activate && python -m bash_kernel.install
 
 freeze:
 	. .env/bin/activate && pip freeze > requirements.txt
