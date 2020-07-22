@@ -5,10 +5,21 @@
     <link>https://krilor.github.com/iamhacking/posts/</link>
     <description>Recent content in Posts on I am hacking</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 20 Jul 2020 21:06:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2020 22:30:00 +0200</lastBuildDate>
     
 	<atom:link href="https://krilor.github.com/iamhacking/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Testing hashcat</title>
+      <link>https://krilor.github.com/iamhacking/posts/testing-hashcat/</link>
+      <pubDate>Wed, 22 Jul 2020 22:30:00 +0200</pubDate>
+      
+      <guid>https://krilor.github.com/iamhacking/posts/testing-hashcat/</guid>
+      <description>So, this time around I will give hashcat a spin.
+Had a bit of trouble getting started. The install was easy enough, just download, unarchive and put a symlink in path, but installing required OpenCL took me a while. Or, actually, just figuring out what the heck I had to install was the hard part.
+I&amp;rsquo;m on a ThinkPad X1 with integrated Intel grahics, so I had to install OpenCL Runtimes for Intel Processors.</description>
+    </item>
     
     <item>
       <title>Using findmyhash to crack a password</title>

@@ -5,7 +5,7 @@
     <link>https://krilor.github.com/iamhacking/tags/hashcat/</link>
     <description>Recent content in hashcat on I am hacking</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 21 Jul 2020 21:30:00 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2020 22:30:00 +0200</lastBuildDate>
     
 	<atom:link href="https://krilor.github.com/iamhacking/tags/hashcat/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,7 +13,7 @@
     <item>
       <title>Testing hashcat</title>
       <link>https://krilor.github.com/iamhacking/posts/testing-hashcat/</link>
-      <pubDate>Tue, 21 Jul 2020 21:30:00 +0200</pubDate>
+      <pubDate>Wed, 22 Jul 2020 22:30:00 +0200</pubDate>
       
       <guid>https://krilor.github.com/iamhacking/posts/testing-hashcat/</guid>
       <description>So, this time around I will give hashcat a spin.
