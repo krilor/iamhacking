@@ -1,13 +1,11 @@
-```python
 ---
 
 title: "Testing hashcat"
-date: 2020-07-21T21:30:00+02:00
+date: 2020-07-22T22:30:00+02:00
 tags: ["hashcat", "cracking"]
 draft: false
 
 ---
-```
 
 So, this time around I will give hashcat a spin.
 

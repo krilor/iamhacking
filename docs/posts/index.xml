@@ -51,16 +51,5 @@ NOTE: md5 is not a hasing algorithm that should be used to hash passwords - use 
       <description>I&amp;rsquo;m setting up this blog/journal repo to document things I explore and learn when dipping my toes into cyber security.</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://krilor.github.com/iamhacking/posts/testing-hashcat/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://krilor.github.com/iamhacking/posts/testing-hashcat/</guid>
-      <description>--- title: &amp;#34;Testing hashcat&amp;#34; date: 2020-07-21T21:30:00+02:00 tags: [&amp;#34;hashcat&amp;#34;, &amp;#34;cracking&amp;#34;] draft: false --- So, this time around I will give hashcat a spin.
-Had a bit of trouble getting started. The install was easy enough, just download, unarchive and put a symlink in path, but installing required OpenCL took me a while. Or, actually, just figuring out what the heck I had to install was the hard part.
-I&amp;rsquo;m on a ThinkPad X1 with integrated Intel grahics, so I had to install OpenCL Runtimes for Intel Processors.</description>
-    </item>
-    
   </channel>
 </rss>

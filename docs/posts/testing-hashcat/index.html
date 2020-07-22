@@ -2,22 +2,22 @@
 <html lang='en' dir='auto'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='--- title: &#34;Testing hashcat&#34; date: 2020-07-21T21:30:00&#43;02:00 tags: [&#34;hashcat&#34;, &#34;cracking&#34;] draft: false --- So, this time around I will give hashcat a spin.
+<meta name='description' content='So, this time around I will give hashcat a spin.
 Had a bit of trouble getting started. The install was easy enough, just download, unarchive and put a symlink in path, but installing required OpenCL took me a while. Or, actually, just figuring out what the heck I had to install was the hard part.
 I&rsquo;m on a ThinkPad X1 with integrated Intel grahics, so I had to install OpenCL Runtimes for Intel Processors.'>
 <meta name='theme-color' content='#ffcd00'>
 
-<meta property='og:title' content=' • I am hacking'>
-<meta property='og:description' content='--- title: &#34;Testing hashcat&#34; date: 2020-07-21T21:30:00&#43;02:00 tags: [&#34;hashcat&#34;, &#34;cracking&#34;] draft: false --- So, this time around I will give hashcat a spin.
+<meta property='og:title' content='Testing hashcat • I am hacking'>
+<meta property='og:description' content='So, this time around I will give hashcat a spin.
 Had a bit of trouble getting started. The install was easy enough, just download, unarchive and put a symlink in path, but installing required OpenCL took me a while. Or, actually, just figuring out what the heck I had to install was the hard part.
 I&rsquo;m on a ThinkPad X1 with integrated Intel grahics, so I had to install OpenCL Runtimes for Intel Processors.'>
 <meta property='og:url' content='https://krilor.github.com/iamhacking/posts/testing-hashcat/'>
 <meta property='og:site_name' content='I am hacking'>
-<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='hashcat'><meta property='article:tag' content='cracking'><meta property='article:published_time' content='2020-07-21T21:30:00&#43;02:00'/><meta property='article:modified_time' content='2020-07-21T21:30:00&#43;02:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.74.1" />
 
-  <title> • I am hacking</title>
+  <title>Testing hashcat • I am hacking</title>
   <link rel='canonical' href='https://krilor.github.com/iamhacking/posts/testing-hashcat/'>
   
   
@@ -77,6 +77,8 @@ I&rsquo;m on a ThinkPad X1 with integrated Intel grahics, so I had to install Op
       </li><li>
         <a href='/iamhacking/tags/findmyhash/' style='font-size:1em'>findmyhash</a>
       </li><li>
+        <a href='/iamhacking/tags/hashcat/' style='font-size:1em'>hashcat</a>
+      </li><li>
         <a href='/iamhacking/tags/hugo/' style='font-size:1em'>hugo</a>
       </li><li>
         <a href='/iamhacking/tags/jupyter/' style='font-size:1em'>jupyter</a>
@@ -126,7 +128,7 @@ I&rsquo;m on a ThinkPad X1 with integrated Intel grahics, so I had to install Op
     <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
   <section class='widget widget-breadcrumbs sep-after'>
     <nav id='breadcrumbs'>
-      <ol><li><a href='/iamhacking/'>I am hacking</a></li><li><a href='/iamhacking/posts/'>Posts</a></li><li><span></span></li></ol>
+      <ol><li><a href='/iamhacking/'>I am hacking</a></li><li><a href='/iamhacking/posts/'>Posts</a></li><li><span>Testing hashcat</span></li></ol>
     </nav>
   </section></div>
       </div>
@@ -145,7 +147,7 @@ I&rsquo;m on a ThinkPad X1 with integrated Intel grahics, so I had to install Op
   <header class='header entry-header'>
   <div class='container sep-after'>
     <div class='header-info'>
-      <h1 class='title'></h1>
+      <h1 class='title'>Testing hashcat</h1>
       
 
     </div>
@@ -159,7 +161,7 @@ I&rsquo;m on a ThinkPad X1 with integrated Intel grahics, so I had to install Op
   
 </svg>
 <span class='screen-reader-text'>Posted on </span>
-  <time class='entry-date' datetime='0001-01-01T00:00:00Z'>0001, Jan 01</time>
+  <time class='entry-date' datetime='2020-07-21T21:30:00&#43;02:00'>2020, Jul 21</time>
 </span>
 
   
@@ -184,15 +186,7 @@ I&rsquo;m on a ThinkPad X1 with integrated Intel grahics, so I had to install Op
   
 
   <div class='container entry-content'>
-  <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">---</span>
-
-title: <span style="color:#e6db74">&#34;Testing hashcat&#34;</span>
-date: <span style="color:#ae81ff">2020</span><span style="color:#f92672">-</span><span style="color:#ae81ff">07</span><span style="color:#f92672">-</span><span style="color:#ae81ff">21</span>T21:<span style="color:#ae81ff">30</span>:<span style="color:#ae81ff">00</span><span style="color:#f92672">+</span><span style="color:#ae81ff">02</span>:<span style="color:#ae81ff">00</span>
-tags: [<span style="color:#e6db74">&#34;hashcat&#34;</span>, <span style="color:#e6db74">&#34;cracking&#34;</span>]
-draft: false
-
-<span style="color:#f92672">---</span>
-</code></pre></div><p>So, this time around I will give hashcat a spin.</p>
+  <p>So, this time around I will give hashcat a spin.</p>
 <p>Had a bit of trouble getting started. The install was easy enough, just download, unarchive and put a symlink in path, but installing required OpenCL took me a while. Or, actually, just figuring out what the heck I had to install was the hard part.</p>
 <p>I&rsquo;m on a ThinkPad X1 with integrated Intel grahics, so I had to install <a href="https://software.intel.com/content/www/us/en/develop/articles/opencl-drivers.html">OpenCL Runtimes for Intel Processors</a>. I first installed the CPU runtime, then the graphics one. Used <a href="https://askubuntu.com/a/1134762">this askubuntu answer</a> as guidance.</p>
 <h2 id="device-trouble">Device trouble</h2>
@@ -457,7 +451,14 @@ Stopped: Wed Jul 22 22:06:18 2020
 
   
 <footer class='entry-footer'>
-  <div class='container sep-before'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/iamhacking/tags/hashcat/'>hashcat</a>, <a class='tag' href='/iamhacking/tags/cracking/'>cracking</a></div>
+
   </div>
 </footer>
 
@@ -465,16 +466,16 @@ Stopped: Wed Jul 22 22:06:18 2020
 </article>
 
 <nav class='entry-nav'>
-  <div class='container'><div class='next-entry sep-before'>
-      <a href='/iamhacking/posts/ready-to-go/'>
-        <span class='screen-reader-text'>Next post: </span>Ready to GO<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/iamhacking/posts/find-my-hash/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
-  <line x1="4" y1="12" x2="20" y2="12"/>
-  <polyline points="14 6 20 12 14 18"/>
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
   
 </svg>
-</span>
-      </a>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Using findmyhash to crack a password</a>
     </div></div>
 </nav>
 
