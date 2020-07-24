@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>johntheripper on I am hacking</title>
+    <link>https://krilor.github.com/iamhacking/tags/johntheripper/</link>
+    <description>Recent content in johntheripper on I am hacking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 24 Jul 2020 21:40:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://krilor.github.com/iamhacking/tags/johntheripper/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Taking John The Ripper for a spin</title>
+      <link>https://krilor.github.com/iamhacking/posts/john-the-ripper/</link>
+      <pubDate>Fri, 24 Jul 2020 21:40:00 +0200</pubDate>
+      
+      <guid>https://krilor.github.com/iamhacking/posts/john-the-ripper/</guid>
+      <description>It is time time to give John The Ripper as spin (further referred to as simpy &amp;ldquo;John&amp;rdquo;). It is a open-source password cracker similar to hashcat from the previous post.
+First, we need to install it. There are three versions to choose from.
+ PRO - distributed primarily in the form of &amp;ldquo;native&amp;rdquo; packages for the target operating systems and in general is meant to be easier to install. Not free.</description>
+    </item>
+    
+  </channel>
+</rss>
