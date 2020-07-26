@@ -337,14 +337,10 @@ xxd
 xxd decode/reverse
 hello
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">### Fold and unfold</span>
-
-Folding <span style="color:#f92672">is</span> used to create text files of an arbritraty line length<span style="color:#f92672">.</span>
-
-Unfold <span style="color:#f92672">is</span> done <span style="color:#66d9ef">with</span> using translate (tr) to remove characters<span style="color:#f92672">.</span>
-
-
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fold <span style="color:#f92672">--</span>help
+<h3 id="fold-and-unfold">Fold and unfold</h3>
+<p>Folding is used to create text files of an arbritraty line length.</p>
+<p>Unfold is done with using translate (tr) to remove characters.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fold <span style="color:#f92672">--</span>help
 </code></pre></div><pre><code>Usage: fold [OPTION]... [FILE]...
 Wrap input lines in each FILE, writing to standard output.
 
@@ -393,36 +389,29 @@ hello%20world
 decoded
 hello world
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">## Ciphers</span>
-
-I will have a look at a few common (CTF<span style="color:#f92672">-</span>wise) ciphers<span style="color:#f92672">.</span>
-
-<span style="color:#75715e">### Caesar</span>
-
-[Caesar Ciper](https:<span style="color:#f92672">//</span>en<span style="color:#f92672">.</span>wikipedia<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>wiki<span style="color:#f92672">/</span>Caesar_cipher) aka [ROT](https:<span style="color:#f92672">//</span>en<span style="color:#f92672">.</span>wikipedia<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>wiki<span style="color:#f92672">/</span>ROT13)<span style="color:#f92672">.</span>
-
-To do rotation ciphers, use any of these resources<span style="color:#f92672">.</span>
-
-<span style="color:#f92672">*</span> https:<span style="color:#f92672">//</span>www<span style="color:#f92672">.</span>chmag<span style="color:#f92672">.</span><span style="color:#f92672">in</span><span style="color:#f92672">/</span>articles<span style="color:#f92672">/</span>momsguide<span style="color:#f92672">/</span>decoding<span style="color:#f92672">-</span>rot<span style="color:#f92672">-</span>using<span style="color:#f92672">-</span>the<span style="color:#f92672">-</span>echo<span style="color:#f92672">-</span><span style="color:#f92672">and</span><span style="color:#f92672">-</span>tr<span style="color:#f92672">-</span>commands<span style="color:#f92672">-</span><span style="color:#f92672">in</span><span style="color:#f92672">-</span>your<span style="color:#f92672">-</span>linux<span style="color:#f92672">-</span>terminal<span style="color:#f92672">/</span>
-<span style="color:#f92672">*</span> https:<span style="color:#f92672">//</span>askubuntu<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>questions<span style="color:#f92672">/</span><span style="color:#ae81ff">1097761</span><span style="color:#f92672">/</span>changing<span style="color:#f92672">-</span>individual<span style="color:#f92672">-</span>letter<span style="color:#f92672">-</span>position<span style="color:#f92672">-</span><span style="color:#66d9ef">with</span><span style="color:#f92672">-</span>bash
-<span style="color:#f92672">*</span> https:<span style="color:#f92672">//</span>www<span style="color:#f92672">.</span>reddit<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>r<span style="color:#f92672">/</span>commandline<span style="color:#f92672">/</span>comments<span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>orqht<span style="color:#f92672">/</span>bash_script_that_performs_a_modified_caesar_cipher<span style="color:#f92672">/</span>
-
-This little tidbit does ROT13 <span style="color:#66d9ef">with</span> can be decoded <span style="color:#66d9ef">with</span> the same method<span style="color:#f92672">.</span>
-I<span style="color:#e6db74">&#39;ve opted for the tr approach here.</span>
-
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">echo <span style="color:#e6db74">&#34;hell0&#34;</span>
+<h2 id="ciphers-1">Ciphers</h2>
+<p>I will have a look at a few common (CTF-wise) ciphers.</p>
+<h3 id="caesar">Caesar</h3>
+<p><a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Ciper</a> aka <a href="https://en.wikipedia.org/wiki/ROT13">ROT</a>.</p>
+<p>To do rotation ciphers, use any of these resources.</p>
+<ul>
+<li><a href="https://www.chmag.in/articles/momsguide/decoding-rot-using-the-echo-and-tr-commands-in-your-linux-terminal/">https://www.chmag.in/articles/momsguide/decoding-rot-using-the-echo-and-tr-commands-in-your-linux-terminal/</a></li>
+<li><a href="https://askubuntu.com/questions/1097761/changing-individual-letter-position-with-bash">https://askubuntu.com/questions/1097761/changing-individual-letter-position-with-bash</a></li>
+<li><a href="https://www.reddit.com/r/commandline/comments/1orqht/bash_script_that_performs_a_modified_caesar_cipher/">https://www.reddit.com/r/commandline/comments/1orqht/bash_script_that_performs_a_modified_caesar_cipher/</a></li>
+</ul>
+<p>This little tidbit does ROT13 with can be decoded with the same method.
+I&rsquo;ve opted for the tr approach here.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">echo <span style="color:#e6db74">&#34;hell0&#34;</span>
 echo <span style="color:#e6db74">&#34;hellO&#34;</span> <span style="color:#f92672">|</span> tr <span style="color:#960050;background-color:#1e0010">‘</span>n<span style="color:#f92672">-</span>za<span style="color:#f92672">-</span>mN<span style="color:#f92672">-</span>ZA<span style="color:#f92672">-</span>M<span style="color:#960050;background-color:#1e0010">’</span> <span style="color:#960050;background-color:#1e0010">‘</span>a<span style="color:#f92672">-</span>zA<span style="color:#f92672">-</span>Z<span style="color:#960050;background-color:#1e0010">’</span>
 echo <span style="color:#e6db74">&#34;hellO&#34;</span> <span style="color:#f92672">|</span> tr <span style="color:#960050;background-color:#1e0010">‘</span>n<span style="color:#f92672">-</span>za<span style="color:#f92672">-</span>mN<span style="color:#f92672">-</span>ZA<span style="color:#f92672">-</span>M<span style="color:#960050;background-color:#1e0010">’</span> <span style="color:#960050;background-color:#1e0010">‘</span>a<span style="color:#f92672">-</span>zA<span style="color:#f92672">-</span>Z<span style="color:#960050;background-color:#1e0010">’</span> <span style="color:#f92672">|</span> tr <span style="color:#960050;background-color:#1e0010">‘</span>n<span style="color:#f92672">-</span>za<span style="color:#f92672">-</span>mN<span style="color:#f92672">-</span>ZA<span style="color:#f92672">-</span>M<span style="color:#960050;background-color:#1e0010">’</span> <span style="color:#960050;background-color:#1e0010">‘</span>a<span style="color:#f92672">-</span>zA<span style="color:#f92672">-</span>Z<span style="color:#960050;background-color:#1e0010">’</span>
 </code></pre></div><pre><code>hell0
 uryyB
 hellO
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">### Atbash</span>
-
-[Atbash](https:<span style="color:#f92672">//</span>en<span style="color:#f92672">.</span>wikipedia<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>wiki<span style="color:#f92672">/</span>Atbash) simply reverses the alphabeth <span style="color:#f92672">and</span> uses that <span style="color:#66d9ef">as</span> a cipher<span style="color:#f92672">.</span>
-This can be done <span style="color:#f92672">in</span> bash quite nicely <span style="color:#66d9ef">with</span> tr<span style="color:#f92672">.</span>
-
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># setting up some variables</span>
+<h3 id="atbash">Atbash</h3>
+<p><a href="https://en.wikipedia.org/wiki/Atbash">Atbash</a> simply reverses the alphabeth and uses that as a cipher.
+This can be done in bash quite nicely with tr.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># setting up some variables</span>
 a<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>( echo {a<span style="color:#f92672">..</span>z} <span style="color:#f92672">|</span> tr <span style="color:#f92672">-</span>d <span style="color:#e6db74">&#39; &#39;</span> )
 echo <span style="color:#e6db74">&#34;a $a&#34;</span>
 A<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>{a<span style="color:#f92672">^^</span>}
@@ -441,10 +430,7 @@ R ZYXWVUTSRQPONMLKJIHGFEDCBA
 sVoOl
 hElLo
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">### Vigenére cipher</span>
-
-[Vigenére cipher](https:<span style="color:#f92672">//</span>en<span style="color:#f92672">.</span>wikipedia<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>wiki<span style="color:#f92672">/</span>Vigen<span style="color:#f92672">%</span>C3<span style="color:#f92672">%</span>A8re_cipher)
-</code></pre></div><h2 id="closing-remarks">Closing remarks</h2>
+<h2 id="closing-remarks">Closing remarks</h2>
 <p>Understanding and working with encodings and (simple) ciphers in bash: check.</p>
 <p>Even tho this was just prodding at the surface, I feel that I&rsquo;ve learned a bit about encoding/ciphers and also about some tools that that can be used to work with such matters directly in my terminal.</p>
 

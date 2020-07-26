@@ -201,8 +201,6 @@ echo hello | xxd -p | sed 's/../& /g' | xxd -p -r
     hello
 
 
-
-```python
 ### Fold and unfold
 
 Folding is used to create text files of an arbritraty line length.
@@ -210,7 +208,6 @@ Folding is used to create text files of an arbritraty line length.
 Unfold is done with using translate (tr) to remove characters.
 
 
-```
 
 
 ```python
@@ -278,8 +275,6 @@ echo "hello world" | xargs urlencode | xargs urlencode -d
     hello world
 
 
-
-```python
 ## Ciphers
 
 I will have a look at a few common (CTF-wise) ciphers.
@@ -297,7 +292,6 @@ To do rotation ciphers, use any of these resources.
 This little tidbit does ROT13 with can be decoded with the same method.
 I've opted for the tr approach here.
 
-```
 
 
 ```python
@@ -311,14 +305,11 @@ echo "hellO" | tr ‘n-za-mN-ZA-M’ ‘a-zA-Z’ | tr ‘n-za-mN-ZA-M’ ‘a-z
     hellO
 
 
-
-```python
 ### Atbash
 
 [Atbash](https://en.wikipedia.org/wiki/Atbash) simply reverses the alphabeth and uses that as a cipher.
 This can be done in bash quite nicely with tr.
 
-```
 
 
 ```python
@@ -343,13 +334,6 @@ echo sVoOl | tr $a $r | tr $A $R
     sVoOl
     hElLo
 
-
-
-```python
-### Vigenére cipher
-
-[Vigenére cipher](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher)
-```
 
 ## Closing remarks
 
