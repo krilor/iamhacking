@@ -1,7 +1,7 @@
 ---
 title: "Wireshark for network traffic"
 date: 2020-07-25T12:03:28+02:00
-draft: true
+draft: false
 ---
 
 I wanted to take [Wireshark](https://www.wireshark.org/) for a spin. Wireshark lets you see what’s happening on your network at a microscopic level and is the de facto standard for network protocol analysis.

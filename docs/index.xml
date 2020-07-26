@@ -23,6 +23,17 @@ I found these, which are ok posts/resources about the topic.
     </item>
     
     <item>
+      <title>Wireshark for network traffic</title>
+      <link>https://krilor.github.com/iamhacking/posts/wireshark/</link>
+      <pubDate>Sat, 25 Jul 2020 12:03:28 +0200</pubDate>
+      
+      <guid>https://krilor.github.com/iamhacking/posts/wireshark/</guid>
+      <description>I wanted to take Wireshark for a spin. Wireshark lets you see what’s happening on your network at a microscopic level and is the de facto standard for network protocol analysis.
+Installation was pretty straight forward. Just unstalled the Ubuntu packages wireshark (GUI) and tshark (CLI), then followed this thread to set up non-root access for myself.
+Testing Testing it was pretty straigh forward. Just fire it up and inspect the network packages as I browse the internet.</description>
+    </item>
+    
+    <item>
       <title>Taking John The Ripper for a spin</title>
       <link>https://krilor.github.com/iamhacking/posts/john-the-ripper/</link>
       <pubDate>Fri, 24 Jul 2020 21:40:00 +0200</pubDate>

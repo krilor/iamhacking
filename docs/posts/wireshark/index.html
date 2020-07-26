@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='I wanted to take Wireshark for a spin. Wireshark lets you see what’s happening on your network at a microscopic level and is the de facto standard for network protocol analysis.
+Installation was pretty straight forward. Just unstalled the Ubuntu packages wireshark (GUI) and tshark (CLI), then followed this thread to set up non-root access for myself.
+Testing Testing it was pretty straigh forward. Just fire it up and inspect the network packages as I browse the internet.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Wireshark for network traffic • I am hacking'>
+<meta property='og:description' content='I wanted to take Wireshark for a spin. Wireshark lets you see what’s happening on your network at a microscopic level and is the de facto standard for network protocol analysis.
+Installation was pretty straight forward. Just unstalled the Ubuntu packages wireshark (GUI) and tshark (CLI), then followed this thread to set up non-root access for myself.
+Testing Testing it was pretty straigh forward. Just fire it up and inspect the network packages as I browse the internet.'>
+<meta property='og:url' content='https://krilor.github.com/iamhacking/posts/wireshark/'>
+<meta property='og:site_name' content='I am hacking'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:published_time' content='2020-07-25T12:03:28&#43;02:00'/><meta property='article:modified_time' content='2020-07-25T12:03:28&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.74.1" />
+
+  <title>Wireshark for network traffic • I am hacking</title>
+  <link rel='canonical' href='https://krilor.github.com/iamhacking/posts/wireshark/'>
+  
+  
+  <link rel='icon' href='/iamhacking/favicon.ico'>
+<link rel='stylesheet' href='/iamhacking/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/iamhacking/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/iamhacking/'>
+        <img src='/iamhacking/images/logo.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/iamhacking/'>
+      I am hacking
+      </a>
+    </h2>
+    <div class='desc'>
+    Kristoffer is exporing cyber security
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Search</h4>
+  </header>
+
+  <form action='/iamhacking/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/iamhacking/tags/cracking/' style='font-size:2em'>cracking</a>
+      </li><li>
+        <a href='/iamhacking/tags/findmyhash/' style='font-size:1em'>findmyhash</a>
+      </li><li>
+        <a href='/iamhacking/tags/hashcat/' style='font-size:1em'>hashcat</a>
+      </li><li>
+        <a href='/iamhacking/tags/hugo/' style='font-size:1em'>hugo</a>
+      </li><li>
+        <a href='/iamhacking/tags/johntheripper/' style='font-size:1em'>johntheripper</a>
+      </li><li>
+        <a href='/iamhacking/tags/jupyter/' style='font-size:1em'>jupyter</a>
+      </li><li>
+        <a href='/iamhacking/tags/password/' style='font-size:1.3333333333333333em'>password</a>
+      </li><li>
+        <a href='/iamhacking/tags/passwords/' style='font-size:1em'>passwords</a>
+      </li><li>
+        <a href='/iamhacking/tags/python/' style='font-size:1em'>python</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://github.com/krilor/iamhacking'>Github Repo</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/iamhacking/'>I am hacking</a></li><li><a href='/iamhacking/posts/'>Posts</a></li><li><span>Wireshark for network traffic</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>I am hacking</p><p class='desc site-desc'>Kristoffer is exporing cyber security</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Wireshark for network traffic</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2020-07-25T12:03:28&#43;02:00'>2020, Jul 25</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+2 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>I wanted to take <a href="https://www.wireshark.org/">Wireshark</a> for a spin. Wireshark lets you see what’s happening on your network at a microscopic level and is the de facto standard for network protocol analysis.</p>
+<p>Installation was pretty straight forward. Just unstalled the Ubuntu packages <em>wireshark</em> (GUI) and <em>tshark</em> (CLI), then followed <a href="https://osqa-ask.wireshark.org/questions/7976/wireshark-setup-linux-for-nonroot-user">this thread</a> to set up non-root access for myself.</p>
+<h2 id="testing">Testing</h2>
+<p>Testing it was pretty straigh forward. Just fire it up and inspect the network packages as I browse the internet. But I wanted to do something &ldquo;real&rdquo;, so I went googling for a simple CTF challenge that could help with that.</p>
+<p>I landed on the <a href="https://tryhackme.com/room/wirectf">tryhackme.com Wireshark CTFs</a>. The first challenge is to find a flag within the a downloadable .pcap file on the format <code>****{********************************}</code>. First thing I did was do a simple egrep. Both of these found something of interest, but it is not easy to figure out where to go from there.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">egrep -a flag net.pcap
+egrep -a <span style="color:#e6db74">&#39;.{4}\{.{32}\}&#39;</span> net.pcap
+</code></pre></div><p>Flag <em>a</em> is binary as text.</p>
+<p>So I started Wireshark and just felt lost. Where to start? Since what I want is to explore wireshark, I found a <a href="https://blog.qz.sg/wireshark-ctfs-writeup-tryhackme-part-1-of-2/">ctf walkthrough</a> on googlez.</p>
+<p>Useful wireshark functions used in the walkthrough are</p>
+<ul>
+<li>File -&gt; Export Objects -&gt; HTTP</li>
+<li>[Right click package] -&gt; Follow -&gt; TCP Steam</li>
+</ul>
+<p>That gives everything we need to continue deciphering the data using our favorite scripting language. I&rsquo;ll save that for later.</p>
+<p>What are other ways we could have identified this traffic/transfer using Wireshark or tshark?</p>
+<h2 id="tshark-commands">Tshark commands</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># export objects</span>
+tshark -r net.pcap --export-objects http,tmpfolder
+
+<span style="color:#75715e"># tcp text search</span>
+tshark -r net.pcap -Y <span style="color:#e6db74">&#39;tcp contains flag&#39;</span>
+
+<span style="color:#75715e"># follow stream</span>
+tshark -r net.pcap -q -z follow,tcp,hex,4
+</code></pre></div><p>These are some of the commands I used.</p>
+<h2 id="thoughts">Thoughts</h2>
+<p>While I didn&rsquo;t actually solve the CFT, I did spend some time using Wireshark and tshark. I guess one needs to spend quite a lot more time with it, but hey, it is a good start.</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'>
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/iamhacking/posts/john-the-ripper/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Taking John The Ripper for a spin</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/iamhacking/posts/encoding-and-ciphers-in-bash/'>
+        <span class='screen-reader-text'>Next post: </span>Encoding and Ciphers in Bash<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/krilor' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2020 Kristoffer Lorentsen </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/iamhacking/assets/js/"</script>
+
+<script src='/iamhacking/assets/js/main.c3bcf2df.js'></script><script src='/iamhacking/js/custom.js'></script>
+
+</body>
+
+</html>
+
