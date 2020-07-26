@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Today I want to explore encoding and ciphers in bash, and how to convert between different kinds. I&rsquo;ve choosen bash because I like being able to just test stuff directly in my terminal.
+To start off, I did a bit of google-foo and found a couple of resources to figure out what my scope would be.
+I found these, which are ok posts/resources about the topic.
+ https://medium.com/disruptive-labs/a-quick-primer-on-encoding-decoding-for-security-folks-a021afd98fbe https://www.dcode.fr/en  Scope Encodings From the resources listes, I have picked out these encodings that I will work with.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Encoding and Ciphers in Bash • I am hacking'>
+<meta property='og:description' content='Today I want to explore encoding and ciphers in bash, and how to convert between different kinds. I&rsquo;ve choosen bash because I like being able to just test stuff directly in my terminal.
+To start off, I did a bit of google-foo and found a couple of resources to figure out what my scope would be.
+I found these, which are ok posts/resources about the topic.
+ https://medium.com/disruptive-labs/a-quick-primer-on-encoding-decoding-for-security-folks-a021afd98fbe https://www.dcode.fr/en  Scope Encodings From the resources listes, I have picked out these encodings that I will work with.'>
+<meta property='og:url' content='https://krilor.github.com/iamhacking/posts/encoding-and-ciphers-in-bash/'>
+<meta property='og:site_name' content='I am hacking'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:published_time' content='2020-07-26T22:14:00&#43;02:00'/><meta property='article:modified_time' content='2020-07-26T22:14:00&#43;02:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.74.1" />
+
+  <title>Encoding and Ciphers in Bash • I am hacking</title>
+  <link rel='canonical' href='https://krilor.github.com/iamhacking/posts/encoding-and-ciphers-in-bash/'>
+  
+  
+  <link rel='icon' href='/iamhacking/favicon.ico'>
+<link rel='stylesheet' href='/iamhacking/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/iamhacking/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/iamhacking/'>
+        <img src='/iamhacking/images/logo.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/iamhacking/'>
+      I am hacking
+      </a>
+    </h2>
+    <div class='desc'>
+    Kristoffer is exporing cyber security
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Search</h4>
+  </header>
+
+  <form action='/iamhacking/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/iamhacking/tags/cracking/' style='font-size:2em'>cracking</a>
+      </li><li>
+        <a href='/iamhacking/tags/findmyhash/' style='font-size:1em'>findmyhash</a>
+      </li><li>
+        <a href='/iamhacking/tags/hashcat/' style='font-size:1em'>hashcat</a>
+      </li><li>
+        <a href='/iamhacking/tags/hugo/' style='font-size:1em'>hugo</a>
+      </li><li>
+        <a href='/iamhacking/tags/johntheripper/' style='font-size:1em'>johntheripper</a>
+      </li><li>
+        <a href='/iamhacking/tags/jupyter/' style='font-size:1em'>jupyter</a>
+      </li><li>
+        <a href='/iamhacking/tags/password/' style='font-size:1.3333333333333333em'>password</a>
+      </li><li>
+        <a href='/iamhacking/tags/passwords/' style='font-size:1em'>passwords</a>
+      </li><li>
+        <a href='/iamhacking/tags/python/' style='font-size:1em'>python</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://github.com/krilor/iamhacking'>Github Repo</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/iamhacking/'>I am hacking</a></li><li><a href='/iamhacking/posts/'>Posts</a></li><li><span>Encoding and Ciphers in Bash</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>I am hacking</p><p class='desc site-desc'>Kristoffer is exporing cyber security</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Encoding and Ciphers in Bash</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2020-07-26T22:14:00&#43;02:00'>2020, Jul 26</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+6 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>Today I want to explore encoding and ciphers in bash, and how to convert between different kinds. I&rsquo;ve choosen bash because I like being able to just test stuff directly in my terminal.</p>
+<p>To start off, I did a bit of google-foo and found a couple of resources to figure out what my scope would be.</p>
+<p>I found these, which are ok posts/resources about the topic.</p>
+<ul>
+<li><a href="https://medium.com/disruptive-labs/a-quick-primer-on-encoding-decoding-for-security-folks-a021afd98fbe">https://medium.com/disruptive-labs/a-quick-primer-on-encoding-decoding-for-security-folks-a021afd98fbe</a></li>
+<li><a href="https://www.dcode.fr/en">https://www.dcode.fr/en</a></li>
+</ul>
+<h2 id="scope">Scope</h2>
+<h3 id="encodings">Encodings</h3>
+<p>From the resources listes, I have picked out these encodings that I will work with.</p>
+<ul>
+<li>utf-8</li>
+<li>base64</li>
+<li>base32</li>
+<li>hex</li>
+<li>URL encoding</li>
+</ul>
+<h3 id="ciphers">Ciphers</h3>
+<ul>
+<li>Caesar and ROT(13) - substitution</li>
+<li>Atbash</li>
+</ul>
+<h3 id="other-techniques">Other techniques</h3>
+<ul>
+<li>Folding/unfolding</li>
+</ul>
+<h2 id="encoding">Encoding</h2>
+<h3 id="my-standard-encoding-is-utf-8">My standard encoding is utf-8</h3>
+<p>I can check my terminals default encoding using env variables or the <code>locale</code> command.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># jupyter bash is a bit finnicky, so I need to set the lang explicitly. In my regular terminal, it is allready set.</span>
+export LANG<span style="color:#f92672">=</span>en_US<span style="color:#f92672">.</span>UTF<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>
+
+echo <span style="color:#960050;background-color:#1e0010">$</span>LANG
+locale charmap
+</code></pre></div><pre><code>en_US.UTF-8
+UTF-8
+</code></pre>
+<h3 id="base64">Base64</h3>
+<p>Base64 represents binary data in a ASCII string format, with only 64 selected characters. Each character represents 6 bits of the binary data.</p>
+<p>On Ubuntu (and most linux distros) we can use the <code>base64</code> tool to do encoding and decoding.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">base64 <span style="color:#f92672">--</span>help
+</code></pre></div><pre><code>Usage: base64 [OPTION]... [FILE]
+Base64 encode or decode FILE, or standard input, to standard output.
+
+With no FILE, or when FILE is -, read standard input.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -d, --decode          decode data
+  -i, --ignore-garbage  when decoding, ignore non-alphabet characters
+  -w, --wrap=COLS       wrap encoded lines after COLS character (default 76).
+                          Use 0 to disable line wrapping
+
+      --help     display this help and exit
+      --version  output version information and exit
+
+The data are encoded as described for the base64 alphabet in RFC 4648.
+When decoding, the input may contain newlines in addition to the bytes of
+the formal base64 alphabet.  Use --ignore-garbage to attempt to recover
+from any other non-alphabet bytes in the encoded stream.
+
+GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;
+Report base64 translation bugs to &lt;http://translationproject.org/team/&gt;
+Full documentation at: &lt;http://www.gnu.org/software/coreutils/base64&gt;
+or available locally via: info '(coreutils) base64 invocation'
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">echo <span style="color:#e6db74">&#34;Testing base64&#34;</span>
+
+raw<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Hello&#34;</span>
+echo <span style="color:#e6db74">&#34;RAW: $raw&#34;</span>
+
+encoded<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>( echo <span style="color:#960050;background-color:#1e0010">$</span>raw <span style="color:#f92672">|</span> base64 )
+echo <span style="color:#e6db74">&#34;ENCODED: $encoded&#34;</span>
+
+decoded<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>( echo <span style="color:#960050;background-color:#1e0010">$</span>encoded <span style="color:#f92672">|</span> base64 <span style="color:#f92672">-</span>d )
+echo <span style="color:#e6db74">&#34;DECODED: $decoded&#34;</span>
+
+</code></pre></div><pre><code>Testing base64
+RAW: Hello
+ENCODED: SGVsbG8K
+DECODED: Hello
+</code></pre>
+<h3 id="base32">Base32</h3>
+<p>Base32 is the same as base64, but only has a 32 character alphabet. Each character represents 5 bits.</p>
+<p>Ubuntu has a <code>base32</code> tool built in.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">base32 <span style="color:#f92672">--</span>help
+</code></pre></div><pre><code>Usage: base32 [OPTION]... [FILE]
+Base32 encode or decode FILE, or standard input, to standard output.
+
+With no FILE, or when FILE is -, read standard input.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -d, --decode          decode data
+  -i, --ignore-garbage  when decoding, ignore non-alphabet characters
+  -w, --wrap=COLS       wrap encoded lines after COLS character (default 76).
+                          Use 0 to disable line wrapping
+
+      --help     display this help and exit
+      --version  output version information and exit
+
+The data are encoded as described for the base32 alphabet in RFC 4648.
+When decoding, the input may contain newlines in addition to the bytes of
+the formal base32 alphabet.  Use --ignore-garbage to attempt to recover
+from any other non-alphabet bytes in the encoded stream.
+
+GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;
+Report base32 translation bugs to &lt;http://translationproject.org/team/&gt;
+Full documentation at: &lt;http://www.gnu.org/software/coreutils/base32&gt;
+or available locally via: info '(coreutils) base32 invocation'
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">echo <span style="color:#e6db74">&#34;Testing base32&#34;</span>
+
+raw<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Hello&#34;</span>
+echo <span style="color:#e6db74">&#34;RAW: $raw&#34;</span>
+
+encoded<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>( echo <span style="color:#960050;background-color:#1e0010">$</span>raw <span style="color:#f92672">|</span> base32 )
+echo <span style="color:#e6db74">&#34;ENCODED: $encoded&#34;</span>
+
+decoded<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>( echo <span style="color:#960050;background-color:#1e0010">$</span>encoded <span style="color:#f92672">|</span> base32 <span style="color:#f92672">-</span>d )
+echo <span style="color:#e6db74">&#34;DECODED: $decoded&#34;</span>
+</code></pre></div><pre><code>Testing base32
+RAW: Hello
+ENCODED: JBSWY3DPBI======
+DECODED: Hello
+</code></pre>
+<h3 id="hex">HEX</h3>
+<p>Hex is similar to both base64 and 32, but uses only the 16 characters <em>0123456789abcdef</em>. Each character represents 4 bits, so that 2 characters make up a byte.</p>
+<p><a href="http://manpages.ubuntu.com/manpages/trusty/man1/hexdump.1.html">hexdump</a> can be used to convert to hex, but as far as I know, not the other way around. hexdump is pretty nice if you want to specify the output format (spaces and such).</p>
+<p><a href="http://manpages.ubuntu.com/manpages/trusty/man1/xxd.1.html">xxd</a> can be used to convert both ways.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">echo hexdump
+echo hello <span style="color:#f92672">|</span> hexdump <span style="color:#f92672">-</span>v <span style="color:#f92672">-</span>e <span style="color:#e6db74">&#39;/1 &#34;</span><span style="color:#e6db74">%02x</span><span style="color:#e6db74"> &#34;&#39;</span>; echo
+
+echo; echo xxd
+<span style="color:#75715e"># note, the extra sed is just o place spaces between the values</span>
+echo hello <span style="color:#f92672">|</span> xxd <span style="color:#f92672">-</span>p <span style="color:#f92672">|</span> sed <span style="color:#e6db74">&#39;s/../&amp; /g&#39;</span>
+
+echo; echo <span style="color:#e6db74">&#34;xxd decode/reverse&#34;</span>
+echo hello <span style="color:#f92672">|</span> xxd <span style="color:#f92672">-</span>p <span style="color:#f92672">|</span> sed <span style="color:#e6db74">&#39;s/../&amp; /g&#39;</span> <span style="color:#f92672">|</span> xxd <span style="color:#f92672">-</span>p <span style="color:#f92672">-</span>r
+
+</code></pre></div><pre><code>hexdump
+68 65 6c 6c 6f 0a 
+
+xxd
+68 65 6c 6c 6f 0a 
+
+xxd decode/reverse
+hello
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">### Fold and unfold</span>
+
+Folding <span style="color:#f92672">is</span> used to create text files of an arbritraty line length<span style="color:#f92672">.</span>
+
+Unfold <span style="color:#f92672">is</span> done <span style="color:#66d9ef">with</span> using translate (tr) to remove characters<span style="color:#f92672">.</span>
+
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fold <span style="color:#f92672">--</span>help
+</code></pre></div><pre><code>Usage: fold [OPTION]... [FILE]...
+Wrap input lines in each FILE, writing to standard output.
+
+With no FILE, or when FILE is -, read standard input.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -b, --bytes         count bytes rather than columns
+  -s, --spaces        break at spaces
+  -w, --width=WIDTH   use WIDTH columns instead of 80
+      --help     display this help and exit
+      --version  output version information and exit
+
+GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;
+Report fold translation bugs to &lt;http://translationproject.org/team/&gt;
+Full documentation at: &lt;http://www.gnu.org/software/coreutils/fold&gt;
+or available locally via: info '(coreutils) fold invocation'
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">echo <span style="color:#f92672">-</span>folded
+echo <span style="color:#e6db74">&#34;somelongtext&#34;</span> <span style="color:#f92672">|</span> fold <span style="color:#f92672">-</span>w <span style="color:#ae81ff">4</span>
+
+echo; echo <span style="color:#f92672">-</span>unfolded
+echo <span style="color:#e6db74">&#34;somelongtext&#34;</span> <span style="color:#f92672">|</span> fold <span style="color:#f92672">-</span>w <span style="color:#ae81ff">4</span> <span style="color:#f92672">|</span> tr <span style="color:#f92672">-</span>d <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+</code></pre></div><pre><code>-folded
+some
+long
+text
+
+-unfolded
+somelongtext
+</code></pre>
+<h3 id="url-encoding">URL encoding</h3>
+<p>Ubuntu has a nice tool for doing url encoding - <a href="http://manpages.ubuntu.com/manpages/bionic/man1/urlencode.1.html">urlencode</a>.</p>
+<p>It does not read from stdin, so we need to use xargs to do piping.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">urlencode
+
+echo; echo <span style="color:#e6db74">&#34;encoded&#34;</span>
+echo <span style="color:#e6db74">&#34;hello world&#34;</span> <span style="color:#f92672">|</span> xargs urlencode
+
+echo; echo <span style="color:#e6db74">&#34;decoded&#34;</span>
+echo <span style="color:#e6db74">&#34;hello world&#34;</span> <span style="color:#f92672">|</span> xargs urlencode <span style="color:#f92672">|</span> xargs urlencode <span style="color:#f92672">-</span>d
+</code></pre></div><pre><code>urlencode [-m|-d] string-to-encode-or-decode
+
+encoded
+hello%20world
+
+decoded
+hello world
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">## Ciphers</span>
+
+I will have a look at a few common (CTF<span style="color:#f92672">-</span>wise) ciphers<span style="color:#f92672">.</span>
+
+<span style="color:#75715e">### Caesar</span>
+
+[Caesar Ciper](https:<span style="color:#f92672">//</span>en<span style="color:#f92672">.</span>wikipedia<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>wiki<span style="color:#f92672">/</span>Caesar_cipher) aka [ROT](https:<span style="color:#f92672">//</span>en<span style="color:#f92672">.</span>wikipedia<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>wiki<span style="color:#f92672">/</span>ROT13)<span style="color:#f92672">.</span>
+
+To do rotation ciphers, use any of these resources<span style="color:#f92672">.</span>
+
+<span style="color:#f92672">*</span> https:<span style="color:#f92672">//</span>www<span style="color:#f92672">.</span>chmag<span style="color:#f92672">.</span><span style="color:#f92672">in</span><span style="color:#f92672">/</span>articles<span style="color:#f92672">/</span>momsguide<span style="color:#f92672">/</span>decoding<span style="color:#f92672">-</span>rot<span style="color:#f92672">-</span>using<span style="color:#f92672">-</span>the<span style="color:#f92672">-</span>echo<span style="color:#f92672">-</span><span style="color:#f92672">and</span><span style="color:#f92672">-</span>tr<span style="color:#f92672">-</span>commands<span style="color:#f92672">-</span><span style="color:#f92672">in</span><span style="color:#f92672">-</span>your<span style="color:#f92672">-</span>linux<span style="color:#f92672">-</span>terminal<span style="color:#f92672">/</span>
+<span style="color:#f92672">*</span> https:<span style="color:#f92672">//</span>askubuntu<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>questions<span style="color:#f92672">/</span><span style="color:#ae81ff">1097761</span><span style="color:#f92672">/</span>changing<span style="color:#f92672">-</span>individual<span style="color:#f92672">-</span>letter<span style="color:#f92672">-</span>position<span style="color:#f92672">-</span><span style="color:#66d9ef">with</span><span style="color:#f92672">-</span>bash
+<span style="color:#f92672">*</span> https:<span style="color:#f92672">//</span>www<span style="color:#f92672">.</span>reddit<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>r<span style="color:#f92672">/</span>commandline<span style="color:#f92672">/</span>comments<span style="color:#f92672">/</span><span style="color:#ae81ff">1</span>orqht<span style="color:#f92672">/</span>bash_script_that_performs_a_modified_caesar_cipher<span style="color:#f92672">/</span>
+
+This little tidbit does ROT13 <span style="color:#66d9ef">with</span> can be decoded <span style="color:#66d9ef">with</span> the same method<span style="color:#f92672">.</span>
+I<span style="color:#e6db74">&#39;ve opted for the tr approach here.</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">echo <span style="color:#e6db74">&#34;hell0&#34;</span>
+echo <span style="color:#e6db74">&#34;hellO&#34;</span> <span style="color:#f92672">|</span> tr <span style="color:#960050;background-color:#1e0010">‘</span>n<span style="color:#f92672">-</span>za<span style="color:#f92672">-</span>mN<span style="color:#f92672">-</span>ZA<span style="color:#f92672">-</span>M<span style="color:#960050;background-color:#1e0010">’</span> <span style="color:#960050;background-color:#1e0010">‘</span>a<span style="color:#f92672">-</span>zA<span style="color:#f92672">-</span>Z<span style="color:#960050;background-color:#1e0010">’</span>
+echo <span style="color:#e6db74">&#34;hellO&#34;</span> <span style="color:#f92672">|</span> tr <span style="color:#960050;background-color:#1e0010">‘</span>n<span style="color:#f92672">-</span>za<span style="color:#f92672">-</span>mN<span style="color:#f92672">-</span>ZA<span style="color:#f92672">-</span>M<span style="color:#960050;background-color:#1e0010">’</span> <span style="color:#960050;background-color:#1e0010">‘</span>a<span style="color:#f92672">-</span>zA<span style="color:#f92672">-</span>Z<span style="color:#960050;background-color:#1e0010">’</span> <span style="color:#f92672">|</span> tr <span style="color:#960050;background-color:#1e0010">‘</span>n<span style="color:#f92672">-</span>za<span style="color:#f92672">-</span>mN<span style="color:#f92672">-</span>ZA<span style="color:#f92672">-</span>M<span style="color:#960050;background-color:#1e0010">’</span> <span style="color:#960050;background-color:#1e0010">‘</span>a<span style="color:#f92672">-</span>zA<span style="color:#f92672">-</span>Z<span style="color:#960050;background-color:#1e0010">’</span>
+</code></pre></div><pre><code>hell0
+uryyB
+hellO
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">### Atbash</span>
+
+[Atbash](https:<span style="color:#f92672">//</span>en<span style="color:#f92672">.</span>wikipedia<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>wiki<span style="color:#f92672">/</span>Atbash) simply reverses the alphabeth <span style="color:#f92672">and</span> uses that <span style="color:#66d9ef">as</span> a cipher<span style="color:#f92672">.</span>
+This can be done <span style="color:#f92672">in</span> bash quite nicely <span style="color:#66d9ef">with</span> tr<span style="color:#f92672">.</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># setting up some variables</span>
+a<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>( echo {a<span style="color:#f92672">..</span>z} <span style="color:#f92672">|</span> tr <span style="color:#f92672">-</span>d <span style="color:#e6db74">&#39; &#39;</span> )
+echo <span style="color:#e6db74">&#34;a $a&#34;</span>
+A<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>{a<span style="color:#f92672">^^</span>}
+echo <span style="color:#e6db74">&#34;A $A&#34;</span>
+r<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>( echo <span style="color:#960050;background-color:#1e0010">$</span>a <span style="color:#f92672">|</span> rev )
+echo <span style="color:#e6db74">&#34;r $r&#34;</span>
+R<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">$</span>{r<span style="color:#f92672">^^</span>}
+echo <span style="color:#e6db74">&#34;R $R&#34;</span>
+
+echo hElLo <span style="color:#f92672">|</span> tr <span style="color:#960050;background-color:#1e0010">$</span>a <span style="color:#960050;background-color:#1e0010">$</span>r <span style="color:#f92672">|</span> tr <span style="color:#960050;background-color:#1e0010">$</span>A <span style="color:#960050;background-color:#1e0010">$</span>R
+echo sVoOl <span style="color:#f92672">|</span> tr <span style="color:#960050;background-color:#1e0010">$</span>a <span style="color:#960050;background-color:#1e0010">$</span>r <span style="color:#f92672">|</span> tr <span style="color:#960050;background-color:#1e0010">$</span>A <span style="color:#960050;background-color:#1e0010">$</span>R
+</code></pre></div><pre><code>a abcdefghijklmnopqrstuvwxyz
+A ABCDEFGHIJKLMNOPQRSTUVWXYZ
+r zyxwvutsrqponmlkjihgfedcba
+R ZYXWVUTSRQPONMLKJIHGFEDCBA
+sVoOl
+hElLo
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">### Vigenére cipher</span>
+
+[Vigenére cipher](https:<span style="color:#f92672">//</span>en<span style="color:#f92672">.</span>wikipedia<span style="color:#f92672">.</span>org<span style="color:#f92672">/</span>wiki<span style="color:#f92672">/</span>Vigen<span style="color:#f92672">%</span>C3<span style="color:#f92672">%</span>A8re_cipher)
+</code></pre></div><h2 id="closing-remarks">Closing remarks</h2>
+<p>Understanding and working with encodings and (simple) ciphers in bash: check.</p>
+<p>Even tho this was just prodding at the surface, I feel that I&rsquo;ve learned a bit about encoding/ciphers and also about some tools that that can be used to work with such matters directly in my terminal.</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'>
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/iamhacking/posts/john-the-ripper/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Taking John The Ripper for a spin</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/krilor' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2020 Kristoffer Lorentsen </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/iamhacking/assets/js/"</script>
+
+<script src='/iamhacking/assets/js/main.c3bcf2df.js'></script><script src='/iamhacking/js/custom.js'></script>
+
+</body>
+
+</html>
+

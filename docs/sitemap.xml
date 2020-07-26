@@ -3,12 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://krilor.github.com/iamhacking/tags/cracking/</loc>
-    <lastmod>2020-07-24T21:40:00+02:00</lastmod>
+    <loc>https://krilor.github.com/iamhacking/posts/encoding-and-ciphers-in-bash/</loc>
+    <lastmod>2020-07-26T22:14:00+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://krilor.github.com/iamhacking/</loc>
+    <lastmod>2020-07-26T22:14:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://krilor.github.com/iamhacking/posts/</loc>
+    <lastmod>2020-07-26T22:14:00+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://krilor.github.com/iamhacking/tags/cracking/</loc>
     <lastmod>2020-07-24T21:40:00+02:00</lastmod>
   </url>
   
@@ -19,11 +29,6 @@
   
   <url>
     <loc>https://krilor.github.com/iamhacking/tags/password/</loc>
-    <lastmod>2020-07-24T21:40:00+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://krilor.github.com/iamhacking/posts/</loc>
     <lastmod>2020-07-24T21:40:00+02:00</lastmod>
   </url>
   

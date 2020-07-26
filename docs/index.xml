@@ -5,10 +5,22 @@
     <link>https://krilor.github.com/iamhacking/</link>
     <description>Recent content on I am hacking</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 24 Jul 2020 21:40:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2020 22:14:00 +0200</lastBuildDate>
     
 	<atom:link href="https://krilor.github.com/iamhacking/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Encoding and Ciphers in Bash</title>
+      <link>https://krilor.github.com/iamhacking/posts/encoding-and-ciphers-in-bash/</link>
+      <pubDate>Sun, 26 Jul 2020 22:14:00 +0200</pubDate>
+      
+      <guid>https://krilor.github.com/iamhacking/posts/encoding-and-ciphers-in-bash/</guid>
+      <description>Today I want to explore encoding and ciphers in bash, and how to convert between different kinds. I&amp;rsquo;ve choosen bash because I like being able to just test stuff directly in my terminal.
+To start off, I did a bit of google-foo and found a couple of resources to figure out what my scope would be.
+I found these, which are ok posts/resources about the topic.
+ https://medium.com/disruptive-labs/a-quick-primer-on-encoding-decoding-for-security-folks-a021afd98fbe https://www.dcode.fr/en  Scope Encodings From the resources listes, I have picked out these encodings that I will work with.</description>
+    </item>
     
     <item>
       <title>Taking John The Ripper for a spin</title>
